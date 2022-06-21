@@ -26,7 +26,9 @@ class ColorDescriptor:
 
             hist = self.histogram(image, cornerMask)
             features.extend(hist)
+        features.extend(self.histogram(image, ellipMask))
         return features
+
 
     def histogram(self, image, mask):
         hist = cv2.calcHist([image], [0, 1, 2], mask, self.bins, [0, 360, 0, 256, 0, 256])
